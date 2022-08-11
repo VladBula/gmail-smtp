@@ -3,8 +3,7 @@ const nodemailer = require("nodemailer")
 const bodyParser = require("body-parser")
 const cors = require("cors")
 const app = express()
-//const port = process.env.PORT || 8080
-const port = 3010
+const port = process.env.PORT || 3010
 
 app.use(cors())
 
@@ -16,14 +15,12 @@ const smtp_login = process.env.SMTP_LOGIN || "---"
 const smtp_password = process.env.SMTP_PASSWORD || "---"
 
 const transporter = nodemailer.createTransport({
-    host: "gmail",
+    host: "smtp.gmail.com",
     port: 587,
     secure: false,
     auth: {
-        // user: smtp_login,
-        // pass: smtp_password,
-        user: 'vladbulynk@gmail.com',
-        pass: "khfjnslrjittlgbd"
+        user: smtp_login,
+        pass: smtp_password,
     }, tls: {
         rejectUnauthorized: false
     }
